@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/windowBackground">
+
+    <!-- الشريط العلوي (العنوان والبحث) -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp"
+        android:background="?attr/colorPrimaryVariant"
+        android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_compass"
+            app:tint="?attr/colorOnPrimary"
+            android:contentDescription="اختصارات الراوتر" />
+
+        <AutoCompleteTextView
+            android:id="@+id/urlInput"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="6dp"
+            android:background="@android:drawable/editbox_background"
+            android:hint="192.168.1.1 أو ابحث هنا..."
+            android:inputType="textUri"
+            android:imeOptions="actionGo"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:textColorHint="#757575"
+            android:paddingHorizontal="10dp"
+            android:completionThreshold="1" />
+
+        <ImageButton
+            android:id="@+id/btnGo"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_search"
+            app:tint="?attr/colorOnPrimary"
+            android:contentDescription="انتقال" />
+
+        <ImageButton
+            android:id="@+id/btnReload"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_popup_sync"
+            app:tint="?attr/colorOnPrimary"
+            android:contentDescription="تحديث" />
+    </LinearLayout>
+
+    <!-- شريط التقدم -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:max="100"
+        android:visibility="gone" />
+
+    <!-- حاوية الصفحات (WebView Tabs) مع سحب للتحديث -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:id="@+id/webContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- شريط التحكم السفلي -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="?attr/colorPrimaryVariant"
+        android:elevation="6dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_media_previous"
+            app:tint="?attr/colorOnPrimary"
+            android:contentDescription="رجوع" />
+
+        <ImageButton
+            android:id="@+id/btnForward"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_media_next"
+            app:tint="?attr/colorOnPrimary"
+            android:contentDescription="تقدم" />
+
+        <!-- زر الصفحات (التبويبات) -->
+        <Button
+            android:id="@+id/btnTabs"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:background="?attr/selectableItemBackground"
+            android:text="صفحات [1]"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- زر السجل -->
+        <ImageButton
+            android:id="@+id/btnHistory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_menu_recent_history"
+            app:tint="?attr/colorOnPrimary"
+            android:contentDescription="السجل" />
+
+        <!-- زر وضع الكمبيوتر / الخيارات -->
+        <ImageButton
+            android:id="@+id/btnDesktop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_menu_manage"
+            app:tint="?attr/colorOnPrimary"
+            android:contentDescription="وضع الكمبيوتر" />
+    </LinearLayout>
+
+</LinearLayout>
